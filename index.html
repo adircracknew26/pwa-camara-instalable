@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="InspecciónPWA">
+  <title>Inspección Visual PWA</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <img src="./icons/icon-192.png" alt="Icono Inspección Visual PWA" class="brand-icon">
+      <div>
+        <h1>Inspección Visual PWA</h1>
+        <p class="subtitle">Acceso Consciente a Cámara Frontal / Trasera</p>
+      </div>
+    </div>
+    <button id="btn-instalar" type="button" class="btn btn-install" hidden>
+      Instalar App
+    </button>
+  </header>
+
+  <main class="container">
+    <!-- Guía manual exclusiva para dispositivos iOS (Safari / WebKit) -->
+    <section id="instrucciones-ios" class="card ios-banner" hidden>
+      <h2>Instalación en iPhone / iPad</h2>
+      <p>
+        Para instalar en iPhone, pulsa el icono <strong>Compartir</strong> y selecciona <strong>'Agregar a inicio'</strong>.
+      </p>
+    </section>
+
+    <!-- Tarjeta de Aviso Ético (Pre-Permiso UX) oculta por defecto -->
+    <section id="aviso-permiso" class="card ethical-card" hidden>
+      <div class="ethical-badge">Consentimiento Consciente (Pre-Permiso)</div>
+      <h2>Aviso de Uso de Cámara</h2>
+      <p>
+        Esta aplicación requiere acceso a tu cámara únicamente para mostrar una vista previa local en pantalla. Ninguna imagen se envía a servidores externos.
+      </p>
+      <ul class="ethical-details">
+        <li><strong>Procesamiento 100% local:</strong> El flujo de video permanece exclusivamente en tu teléfono.</li>
+        <li><strong>Lente inicial solicitado:</strong> <span id="lente-solicitado-texto">Cámara Trasera (environment)</span>.</li>
+      </ul>
+      <div class="ethical-actions">
+        <button id="btn-confirmar-permiso" type="button" class="btn btn-confirm">
+          Aceptar y Encender Cámara
+        </button>
+      </div>
+    </section>
+
+    <!-- Visor de Cámara y Controles -->
+    <section class="card camera-card">
+      <div class="status-bar">
+        <span class="status-dot" id="indicador-led"></span>
+        <p id="mensaje-estado" class="status-text">
+          Cámara inactiva. Pulsa "Solicitar Acceso a Cámara" para comenzar.
+        </p>
+      </div>
+
+      <div class="video-wrapper">
+        <video id="visor-camara" autoplay playsinline muted></video>
+      </div>
+
+      <div class="controls-grid">
+        <button id="btn-preparar-camara" type="button" class="btn btn-primary">
+          Solicitar Acceso a Cámara
+        </button>
+        <button id="btn-alternar-camara" type="button" class="btn btn-secondary">
+          Cambiar Cámara (Frontal / Trasera)
+        </button>
+        <button id="btn-apagar-camara" type="button" class="btn btn-danger">
+          Apagar Cámara
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
